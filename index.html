@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-24">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematical Foundations of Deep Learning | Cambridge 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cambridge: {
+                            light: '#A3C1AD', // Cambridge Blue
+                            DEFAULT: '#A3C1AD',
+                            dark: '#85B09A',
+                        },
+                        navy: {
+                            DEFAULT: '#00204E', // Deep academic navy
+                            light: '#003E7E',
+                            dark: '#001535'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Hero Background */
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(0, 32, 78, 0.75), rgba(0, 32, 78, 0.6)), url('https://images.unsplash.com/photo-1533658286950-e883584ba17e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center 30%;
+            background-attachment: fixed;
+        }
+
+        .transition-colors {
+            transition-property: background-color, border-color, color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+        }
+
+        /* Form styling */
+        .form-input {
+            transition: all 0.2s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #A3C1AD;
+            box-shadow: 0 0 0 3px rgba(163, 193, 173, 0.2);
+        }
+
+        /* Hide presentation fields initially */
+        #presentation-fields {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        #presentation-fields.visible {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-[#FAFAF9] text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased transition-colors duration-300">
+
+    <!-- Animated Neural Network / Math Graph Background -->
+    <canvas id="network-bg" class="fixed inset-0 w-full h-full pointer-events-none transition-opacity duration-300" style="z-index: 1; opacity: 0.6;"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="w-full max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <a href="#" class="flex items-center gap-3 md:gap-5 hover:opacity-80 transition-opacity shrink-0">
+                    <img src="cambridge.png" alt="University of Cambridge" class="h-10 md:h-12 w-auto object-contain">
+                    <img src="bath.png" alt="University of Bath" class="h-10 md:h-12 w-auto object-contain">
+                    <img src="maths4dl.png" alt="Maths4DL Logo" class="h-8 md:h-10 w-auto object-contain dark:brightness-0 dark:invert">
+                    <img src="probai.svg" alt="ProbAI Logo" class="h-8 md:h-10 w-auto object-contain dark:brightness-0 dark:invert">
+                </a>
+
+                <div class="flex items-center gap-4 md:gap-6">
+                    <div class="hidden lg:flex space-x-6 xl:space-x-8 items-center">
+                        <a href="#programme" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge transition-colors uppercase tracking-wide">Programme</a>
+                        <a href="#schedule" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge transition-colors uppercase tracking-wide">Schedule</a>
+                        <a href="#speakers" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge transition-colors uppercase tracking-wide">Speakers</a>
+                        <a href="#organisers" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge transition-colors uppercase tracking-wide">Organisers</a>
+                        <a href="#logistics" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge transition-colors uppercase tracking-wide">Logistics</a>
+                        <a href="#apply" class="px-5 xl:px-6 py-2 bg-navy dark:bg-cambridge text-white dark:text-navy text-sm font-medium rounded-sm hover:bg-slate-800 dark:hover:bg-white transition-colors shadow-sm whitespace-nowrap">Apply Now</a>
+                    </div>
+
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-cambridge transition-colors focus:outline-none shrink-0" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-moon dark:hidden text-lg"></i>
+                        <i class="fas fa-sun hidden dark:block text-lg"></i>
+                    </button>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none shrink-0">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 absolute w-full shadow-lg">
+            <div class="flex flex-col px-4 py-4 space-y-4">
+                <a href="#programme" class="mobile-link text-base font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge uppercase tracking-wide">Programme</a>
+                <a href="#schedule" class="mobile-link text-base font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge uppercase tracking-wide">Schedule</a>
+                <a href="#speakers" class="mobile-link text-base font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge uppercase tracking-wide">Speakers</a>
+                <a href="#organisers" class="mobile-link text-base font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge uppercase tracking-wide">Organisers</a>
+                <a href="#logistics" class="mobile-link text-base font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge uppercase tracking-wide">Logistics</a>
+                <a href="#apply" class="mobile-link inline-block text-center px-6 py-3 mt-2 bg-navy dark:bg-cambridge text-white dark:text-navy font-medium rounded-sm">Apply Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-bg min-h-screen flex items-center justify-center relative pt-20">
+        <div class="absolute inset-0 bg-navy/40 dark:bg-black/60"></div>
+        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#FAFAF9] dark:from-slate-900 to-transparent transition-colors duration-300"></div>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                Mathematical Foundations<br>
+                <span class="italic text-cambridge font-light">of Deep Learning</span>
+            </h1>
+
+            <div class="mb-6 animate-fade-in-up">
+                <span class="inline-block py-1 px-4 rounded border border-cambridge/50 text-cambridge bg-navy/60 backdrop-blur-sm text-lg font-serif italic shadow-sm">
+                    3 – 7 August, 2026
+                </span>
+            </div>
+
+            <p class="text-xl text-slate-100 mb-10 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
+                A one-week summer school providing rigorous education in the foundational mathematics of modern AI at the Centre for Mathematical Sciences (Wilberforce Road, Cambridge CB3 0WA, UK).
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#apply" class="px-8 py-3 bg-cambridge text-navy font-semibold rounded-sm hover:bg-white transition-all duration-300 shadow-lg border border-transparent hover:border-cambridge">
+                    Submit Application
+                </a>
+                <a href="#schedule" class="px-8 py-3 bg-transparent border border-white/50 text-white font-medium rounded-sm hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
+                    View Schedule
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Introduction -->
+    <section class="py-24 bg-[#FAFAF9] dark:bg-slate-900 transition-colors duration-300">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <i class="fas fa-graduation-cap text-4xl text-navy/20 dark:text-cambridge/20 mb-6"></i>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy dark:text-white mb-8">Rigour in the Age of AI</h2>
+            <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-light mb-6">
+                This summer school features four day-long lecture courses addressing topics often fragmented across different university departments. We are hosting <strong>graduate students and early career researchers</strong> to favour tight-knit interactions and collaborative dialogue.
+            </p>
+            <p class="text-slate-500 dark:text-slate-400 font-medium">Supported by Maths4DL and ProbAI.</p>
+        </div>
+    </section>
+
+    <!-- Scientific Themes -->
+    <section id="programme" class="py-24 bg-white dark:bg-slate-800 border-y border-slate-200 dark:border-slate-700 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy dark:text-white mb-4">Scientific Programme</h2>
+                <div class="w-24 h-1 bg-cambridge mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="flex gap-6 group">
+                    <div class="flex-shrink-0 w-12 h-12 border border-cambridge text-cambridge dark:text-cambridge rounded-full flex items-center justify-center font-serif text-xl italic group-hover:bg-cambridge group-hover:text-navy transition-colors">1</div>
+                    <div>
+                        <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-2">Approximation Theory</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Key results on neural network approximation, generalised to neural operators for learning mappings between infinite-dimensional function spaces.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 group">
+                    <div class="flex-shrink-0 w-12 h-12 border border-cambridge text-cambridge dark:text-cambridge rounded-full flex items-center justify-center font-serif text-xl italic group-hover:bg-cambridge group-hover:text-navy transition-colors">2</div>
+                    <div>
+                        <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-2">Generative Modelling</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Exploration of flow matching as a bridge between ODEs and density estimation, offering a deterministic alternative to diffusion models.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 group">
+                    <div class="flex-shrink-0 w-12 h-12 border border-cambridge text-cambridge dark:text-cambridge rounded-full flex items-center justify-center font-serif text-xl italic group-hover:bg-cambridge group-hover:text-navy transition-colors">3</div>
+                    <div>
+                        <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-2">Geometric Deep Learning</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Operationalising geometry as a practical tool for ML, addressing learning on graphs and incorporating geometric priors into probabilistic models.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 group">
+                    <div class="flex-shrink-0 w-12 h-12 border border-cambridge text-cambridge dark:text-cambridge rounded-full flex items-center justify-center font-serif text-xl italic group-hover:bg-cambridge group-hover:text-navy transition-colors">4</div>
+                    <div>
+                        <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-2">Inverse Problems & Optimisation</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Addressing complex optimisation challenges, drawing connections between classical methods and modern deep learning frameworks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Structure of the Week (Schedule) -->
+    <section id="schedule" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy dark:text-white text-center mb-16">Structure of the Week</h2>
+
+            <p class="text-center text-slate-600 dark:text-slate-400 mb-10">
+                Each lecturer will teach for one day, roughly from <strong>09:00 to 17:00</strong>.<br>
+                Wednesday morning is dedicated to participant talks/posters, followed by a free afternoon to explore Cambridge.
+            </p>
+
+            <h3 class="text-xl font-serif font-bold text-navy dark:text-cambridge text-center mb-4">Tentative Schedule</h3>
+
+            <div class="overflow-x-auto shadow-md rounded-lg border border-slate-200 dark:border-slate-700">
+                <table class="w-full text-left bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+                    <thead class="bg-navy text-white dark:bg-slate-950">
+                        <tr>
+                            <th class="py-4 px-6 font-semibold border-b border-slate-600">Time</th>
+                            <th class="py-4 px-6 font-semibold border-b border-slate-600">Monday</th>
+                            <th class="py-4 px-6 font-semibold border-b border-slate-600">Tuesday</th>
+                            <th class="py-4 px-6 font-semibold border-b border-slate-600 bg-cambridge text-navy">Wednesday</th>
+                            <th class="py-4 px-6 font-semibold border-b border-slate-600">Thursday</th>
+                            <th class="py-4 px-6 font-semibold border-b border-slate-600">Friday</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="py-4 px-6 font-medium text-slate-500 dark:text-slate-400">Morning</td>
+                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Eldad Haber</td>
+                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Nikola B. Kovachki</td>
+                            <td class="py-4 px-6 font-semibold text-cambridge dark:text-cambridge">Short Talks & Posters</td>
+                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Audrey Repetti</td>
+                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Melanie Weber</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                            <td class="py-4 px-6 font-medium text-slate-500 dark:text-slate-400">Afternoon</td>
+                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Eldad Haber</td>
+                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Nikola B. Kovachki</td>
+                            <td class="py-4 px-6 italic text-slate-500 dark:text-slate-400">Free Afternoon</td>
+                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Audrey Repetti</td>
+                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Melanie Weber</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speakers -->
+    <section id="speakers" class="py-24 bg-white dark:bg-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy dark:text-white text-center mb-16">Lecturers</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
+                <!-- Speaker Card 1 -->
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 border-t-4 border-cambridge shadow-sm hover:shadow-md transition-all flex flex-col items-center md:items-start">
+                    <img src="nikola.jpg" alt="Nikola B. Kovachki" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-cambridge shadow-sm">
+                    <p class="text-xs font-bold text-cambridge uppercase tracking-wider mb-2">NVIDIA / Caltech</p>
+                    <h3 class="text-lg font-serif font-bold mb-1">
+                        <a href="https://kovachki.github.io/" target="_blank" class="text-navy dark:text-white hover:text-cambridge dark:hover:text-cambridge transition-colors">Nikola B. Kovachki</a>
+                    </h3>
+                    <hr class="border-slate-200 dark:border-slate-700 mb-4 mt-3 w-full">
+                    <p class="text-sm text-slate-600 dark:text-slate-300">Expert in approximation theory for infinite-dimensional spaces.</p>
+                </div>
+
+                <!-- Speaker Card 2 -->
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 border-t-4 border-cambridge shadow-sm hover:shadow-md transition-all flex flex-col items-center md:items-start">
+                    <img src="eldad.jpg" alt="Eldad Haber" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-cambridge shadow-sm">
+                    <p class="text-xs font-bold text-cambridge uppercase tracking-wider mb-2">UBC</p>
+                    <h3 class="text-lg font-serif font-bold mb-1">
+                        <a href="https://www.eoas.ubc.ca/people/eldadhaber" target="_blank" class="text-navy dark:text-white hover:text-cambridge dark:hover:text-cambridge transition-colors">Eldad Haber</a>
+                    </h3>
+                    <hr class="border-slate-200 dark:border-slate-700 mb-4 mt-3 w-full">
+                    <p class="text-sm text-slate-600 dark:text-slate-300">Leader in mathematical modelling of deep learning frameworks.</p>
+                </div>
+
+                <!-- Speaker Card 3 -->
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 border-t-4 border-cambridge shadow-sm hover:shadow-md transition-all flex flex-col items-center md:items-start">
+                    <img src="melanie.jpg" alt="Melanie Weber" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-cambridge shadow-sm">
+                    <p class="text-xs font-bold text-cambridge uppercase tracking-wider mb-2">Harvard</p>
+                    <h3 class="text-lg font-serif font-bold mb-1">
+                        <a href="https://melanie-weber.com/" target="_blank" class="text-navy dark:text-white hover:text-cambridge dark:hover:text-cambridge transition-colors">Melanie Weber</a>
+                    </h3>
+                    <hr class="border-slate-200 dark:border-slate-700 mb-4 mt-3 w-full">
+                    <p class="text-sm text-slate-600 dark:text-slate-300">Researching geometric priors in probabilistic models.</p>
+                </div>
+
+                <!-- Speaker Card 4 -->
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 border-t-4 border-cambridge shadow-sm hover:shadow-md transition-all flex flex-col items-center md:items-start">
+                    <img src="audrey.jpg" alt="Audrey Repetti" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-cambridge shadow-sm">
+                    <p class="text-xs font-bold text-cambridge uppercase tracking-wider mb-2">Heriot-Watt</p>
+                    <h3 class="text-lg font-serif font-bold mb-1">
+                        <a href="https://researchportal.hw.ac.uk/en/persons/audrey-repetti" target="_blank" class="text-navy dark:text-white hover:text-cambridge dark:hover:text-cambridge transition-colors">Audrey Repetti</a>
+                    </h3>
+                    <hr class="border-slate-200 dark:border-slate-700 mb-4 mt-3 w-full">
+                    <p class="text-sm text-slate-600 dark:text-slate-300">Leading researcher in inverse problems and continuous optimisation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organisers Section -->
+    <section id="organisers" class="py-24 bg-[#FAFAF9] dark:bg-slate-900 transition-colors duration-300 border-t border-slate-200 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy dark:text-white mb-4">Organising Committee</h2>
+                <div class="w-24 h-1 bg-cambridge mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700">
+                    <h3 class="text-lg font-serif font-bold text-navy dark:text-white mb-2">Prof. Carola-Bibiane Schönlieb</h3>
+                    <p class="text-sm text-cambridge font-semibold uppercase tracking-wider">University of Cambridge</p>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700">
+                    <h3 class="text-lg font-serif font-bold text-navy dark:text-white mb-2">Prof. Chris Budd OBE</h3>
+                    <p class="text-sm text-cambridge font-semibold uppercase tracking-wider">University of Bath</p>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700">
+                    <h3 class="text-lg font-serif font-bold text-navy dark:text-white mb-2">Dr Moshe Eliasof</h3>
+                    <p class="text-sm text-cambridge font-semibold uppercase tracking-wider">University of Cambridge</p>
+                </div>
+
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700">
+                    <h3 class="text-lg font-serif font-bold text-navy dark:text-white mb-2">Dr Davide Murari</h3>
+                    <p class="text-sm text-cambridge font-semibold uppercase tracking-wider">University of Cambridge</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logistics & Experience -->
+    <section id="logistics" class="py-24 bg-navy dark:bg-black text-white relative overflow-hidden transition-colors duration-300">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-cambridge opacity-10 rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 relative group">
+                    <div class="absolute -inset-2 bg-cambridge/30 blur-lg rounded-lg opacity-75 group-hover:opacity-100 transition duration-1000"></div>
+                    <div class="relative border border-cambridge/30 p-2 bg-navy dark:bg-slate-900 rounded-lg">
+                        <img src="cms.jpg" alt="Cambridge" class="w-full h-auto rounded shadow-2xl filter  hover:grayscale-0 transition-all duration-700">
+                    </div>
+                </div>
+
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6 text-white">Logistics & Fees</h2>
+                    <p class="text-slate-300 text-lg mb-8 font-light leading-relaxed">
+                        To foster interaction, we encourage attendees to present their own research on Wednesday morning.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-white/10 p-3 rounded-full mr-4">
+                                <i class="fas fa-pound-sign text-cambridge w-4 text-center"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Registration Fee: £100</h4>
+                                <p class="text-sm text-slate-400 mt-1">Includes lunch & coffee breaks on Mon, Tue, Thu, Fri, plus Wed morning coffee. (Dinners are not included).</p>
+                                <div class="mt-2 inline-flex items-center px-2.5 py-1 rounded border border-cambridge/30 bg-cambridge/10 text-cambridge text-xs font-medium">
+                                    <i class="fas fa-info-circle mr-1.5"></i> Link to registration payment coming soon
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-white/10 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-cambridge w-4 text-center"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Location & Transport</h4>
+                                <p class="text-sm text-slate-400 mt-1">The Centre for Mathematical Sciences is located on Wilberforce Road (CB3 0WA). It is west of the city centre and easily accessible by a 15-minute walk, cycling, or the regular <a href="https://www.go-whippet.co.uk/route/u/" class="text-cambridge hover:underline font-medium" target="_blank">U-Bus service</a> from the centre.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-white/10 p-3 rounded-full mr-4">
+                                <i class="fas fa-bed text-cambridge w-4 text-center"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Accommodation</h4>
+                                <p class="text-sm text-slate-400 mt-1">Students must book their own accommodation promptly. We recommend booking college rooms via <a href="https://www.universityrooms.com/en-GB/" target="_blank" class="text-cambridge hover:underline font-medium">University Rooms</a>. <strong>Churchill College</strong>, <strong>Fitzwilliam College</strong>, and <strong>Robinson College</strong> are the closest to the CMS.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-white/10 p-3 rounded-full mr-4">
+                                <i class="fas fa-compass text-cambridge w-4 text-center"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Free Afternoon</h4>
+                                <p class="text-sm text-slate-400 mt-1">Wednesday afternoon is kept completely free for participants to explore the historic city of Cambridge.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLICATION FORM SECTION -->
+    <section id="apply" class="py-24 bg-[#FAFAF9] dark:bg-slate-900 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-white dark:bg-slate-800 shadow-xl border border-slate-200 dark:border-slate-700 p-8 md:p-12 rounded-lg transition-colors duration-300">
+                <div class="text-center mb-10">
+                    <span class="text-cambridge font-bold tracking-widest uppercase text-xs">Admissions 2026</span>
+                    <h2 class="text-3xl font-serif font-bold text-navy dark:text-white mt-2">Apply for Admission</h2>
+
+                    <div class="mt-4 inline-block text-left bg-blue-50 dark:bg-slate-700/50 p-4 rounded border border-blue-100 dark:border-slate-600 max-w-2xl">
+                        <p class="text-slate-700 dark:text-slate-300 text-sm mb-2">
+                            <strong class="text-navy dark:text-white">Application Deadline: 31 May 2026</strong>
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm">
+                            All applications will be reviewed by the organising committee. Once your place is confirmed we will send you a link for payment.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
+                            Questions? Contact us at <a href="mailto:me53@cam.ac.uk" class="text-cambridge font-medium hover:underline">me53@cam.ac.uk</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Google Form Embed Area -->
+                <div class="w-full bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden relative" style="min-height: 600px;">
+
+                    <!-- NOTE: Replace the src below with your actual Google Form Embed URL -->
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdHpkpijseOOpnsrIJh6qfefUOsTF7tfziqpSAs4dEoUh4gRg/viewform?usp=header" width="100%" height="1505" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                </div>
+
+                <!-- Fallback Link Button -->
+                <div class="text-center mt-6">
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Having trouble viewing the embedded form?</p>
+                    <!-- NOTE: Replace this href with your Google Form Share Link -->
+                    <a href="https://forms.google.com" target="_blank" class="inline-flex items-center px-6 py-3 bg-navy dark:bg-cambridge text-white dark:text-navy text-sm font-medium rounded-sm hover:bg-slate-800 dark:hover:bg-white transition-colors shadow-sm">
+                        <i class="fas fa-external-link-alt mr-2"></i> Open Form in New Tab
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy dark:bg-black text-white py-16 border-t border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+                <!-- Logos Column -->
+                <div class="flex flex-col items-start gap-4">
+                    <h4 class="text-white text-sm font-semibold uppercase tracking-widest mb-2">Supported By</h4>
+                    <div class="flex flex-row flex-wrap items-center gap-6 bg-white p-5 rounded-lg shadow-sm w-full md:w-fit">
+                        <img src="cambridge.png" alt="University of Cambridge" class="h-10 md:h-12 w-auto object-contain">
+                                                <img src="bath.png" alt="University of Bath" class="h-10 md:h-12 w-auto object-contain">
+
+                        <img src="maths4dl.png" alt="Maths4DL" class="h-8 md:h-10 w-auto object-contain">
+                        <img src="probai.svg" alt="ProbAI" class="h-8 md:h-10 w-auto object-contain">
+                    </div>
+                </div>
+
+                <!-- Address Column -->
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-6 font-serif">Contact & Location</h4>
+                    <div class="text-sm text-slate-300 space-y-3">
+                        <p>Centre for Mathematical Sciences<br>Wilberforce Road, Cambridge<br>CB3 0WA, UK</p>
+                        <p class="pt-2">Email: <a href="mailto:me53@cam.ac.uk" class="text-cambridge hover:text-white transition-colors">me53@cam.ac.uk</a></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-slate-800 mt-12 pt-8 text-center text-xs text-slate-500">
+                <p>&copy; 2026 Maths4DL, ProbAI & University of Cambridge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script for Logic -->
+    <script>
+        // Dark Mode Logic
+        const toggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        try {
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+            } else {
+                htmlElement.classList.remove('dark');
+            }
+        } catch (e) {
+            // Fallback for strict iframe blocking localStorage
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                htmlElement.classList.add('dark');
+            }
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            try {
+                if (htmlElement.classList.contains('dark')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+            } catch (e) {}
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        if(mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        // Smooth Scrolling & Prevent Iframe Refresh Bug
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Update URL cleanly without triggering page reload
+                    history.pushState(null, null, targetId);
+                }
+            });
+        });
+
+        // --- Network Background Animation ---
+        const canvas = document.getElementById('network-bg');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        const isDark = () => document.documentElement.classList.contains('dark');
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            initParticles();
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = (Math.random() - 0.5) * 0.8;
+                this.radius = Math.random() * 1.5 + 0.5;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = isDark() ? 'rgba(163, 193, 173, 0.4)' : 'rgba(0, 32, 78, 0.2)';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            let numParticles = Math.min(Math.floor(window.innerWidth / 18), 80); // Scales with screen size
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        let mouse = { x: null, y: null };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            // Draw connections between particles
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 130) {
+                        ctx.beginPath();
+                        let opacity = 1 - (dist / 130);
+                        ctx.strokeStyle = isDark() ? `rgba(163, 193, 173, ${opacity * 0.25})` : `rgba(0, 32, 78, ${opacity * 0.15})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+
+                // Draw connections to mouse
+                if (mouse.x != null) {
+                    let dx = particles[i].x - mouse.x;
+                    let dy = particles[i].y - mouse.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 160) {
+                        ctx.beginPath();
+                        let opacity = 1 - (dist / 160);
+                        ctx.strokeStyle = isDark() ? `rgba(163, 193, 173, ${opacity * 0.4})` : `rgba(0, 32, 78, ${opacity * 0.3})`;
+                        ctx.lineWidth = 1.2;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        animate();
+    </script>
+</body>
+</html>
