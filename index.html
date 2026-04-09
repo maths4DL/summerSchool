@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth scroll-pt-24">
+<html lang="en" class="scroll-smooth scroll-pt-28">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,17 +81,29 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div class="w-full max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
-                <a href="#" class="flex items-center gap-1.5 md:gap-2 lg:gap-2.5 hover:opacity-80 transition-opacity shrink-0">
-                    <img src="cambridge_light.png" alt="University of Cambridge" class="w-16 md:w-18 h-auto object-contain dark:hidden">
-                    <img src="cambridge_dark.png" alt="University of Cambridge" class="hidden w-16 md:w-18 h-auto object-contain dark:block">
-                    <img src="bath.gif" alt="University of Bath" class="w-20 md:w-24 h-auto object-contain dark:hidden">
-                    <img src="bath_dark.jpg" alt="University of Bath" class="hidden w-20 md:w-24 h-auto object-contain dark:block">
-                    <img src="ucl_dark.webp" alt="UCL Logo" class="h-7 md:h-8 w-auto object-contain dark:hidden">
-                    <img src="ucl_white.webp" alt="UCL Logo" class="hidden h-7 md:h-8 w-auto object-contain dark:block">
-                    <img src="maths4dl.png" alt="Maths4DL Logo" class="h-7 md:h-8 w-auto object-contain">
-                    <img src="probai.svg" alt="ProbAI Logo" class="h-7 md:h-8 w-auto object-contain dark:brightness-0 dark:invert">
-                    <img src="cia_logo.png" alt="CIA Logo" class="w-[4.5rem] md:w-[5rem] h-auto object-contain">
+            <div class="flex justify-between items-center h-28">
+                <a href="#" class="grid grid-cols-3 gap-x-2 gap-y-1.5 md:gap-x-3 md:gap-y-2 hover:opacity-80 transition-opacity shrink-0 w-[16.5rem] md:w-[20rem] lg:w-[22rem]">
+                    <div class="flex items-center justify-center h-8 md:h-10">
+                        <img src="cambridge_light.png" alt="University of Cambridge" class="max-w-[4.75rem] md:max-w-[5.5rem] max-h-6 md:max-h-7 w-auto object-contain dark:hidden">
+                        <img src="cambridge_dark.png" alt="University of Cambridge" class="hidden max-w-[4.75rem] md:max-w-[5.5rem] max-h-6 md:max-h-7 w-auto object-contain dark:block">
+                    </div>
+                    <div class="flex items-center justify-center h-8 md:h-10">
+                        <img src="bath.gif" alt="University of Bath" class="max-w-[5.5rem] md:max-w-[6.5rem] max-h-7 md:max-h-8 w-auto object-contain dark:hidden">
+                        <img src="bath_dark.jpg" alt="University of Bath" class="hidden max-w-[5.5rem] md:max-w-[6.5rem] max-h-7 md:max-h-8 w-auto object-contain dark:block">
+                    </div>
+                    <div class="flex items-center justify-center h-8 md:h-10">
+                        <img src="ucl_dark.webp" alt="UCL Logo" class="max-w-[4.5rem] md:max-w-[5rem] max-h-7 md:max-h-8 w-auto object-contain dark:hidden">
+                        <img src="ucl_white.webp" alt="UCL Logo" class="hidden max-w-[4.5rem] md:max-w-[5rem] max-h-7 md:max-h-8 w-auto object-contain dark:block">
+                    </div>
+                    <div class="flex items-center justify-center h-8 md:h-10">
+                        <img src="maths4dl.png" alt="Maths4DL Logo" class="max-w-[4.75rem] md:max-w-[5.25rem] max-h-7 md:max-h-8 w-auto object-contain">
+                    </div>
+                    <div class="flex items-center justify-center h-8 md:h-10">
+                        <img src="probai.svg" alt="ProbAI Logo" class="max-w-[5rem] md:max-w-[5.75rem] max-h-7 md:max-h-8 w-auto object-contain dark:brightness-0 dark:invert">
+                    </div>
+                    <div class="flex items-center justify-center h-8 md:h-10">
+                        <img src="cia_logo.png" alt="CIA Logo" class="max-w-[4.75rem] md:max-w-[5.5rem] max-h-6 md:max-h-7 w-auto object-contain">
+                    </div>
                 </a>
 
                 <div class="flex items-center gap-4 md:gap-6">
@@ -466,12 +478,25 @@
                 <!-- Logos Column -->
                 <div class="flex flex-col items-start gap-4">
                     <h4 class="text-white text-sm font-semibold uppercase tracking-widest mb-2">Supported By</h4>
-                    <div class="flex flex-row flex-wrap items-center gap-6 bg-white p-5 rounded-lg shadow-sm w-full md:w-fit">
-                        <img src="cambridge.png" alt="University of Cambridge" class="h-10 md:h-12 w-auto object-contain">
-                                                <img src="bath.png" alt="University of Bath" class="h-10 md:h-12 w-auto object-contain">
-
-                        <img src="maths4dl.png" alt="Maths4DL" class="h-8 md:h-10 w-auto object-contain">
-                        <img src="probai.svg" alt="ProbAI" class="h-8 md:h-10 w-auto object-contain">
+                    <div class="grid grid-cols-3 gap-x-6 gap-y-5 bg-white p-6 rounded-lg shadow-sm w-full max-w-3xl">
+                        <div class="flex items-center justify-center h-16">
+                            <img src="cambridge_light.png" alt="University of Cambridge" class="max-w-[85%] max-h-10 md:max-h-11 w-auto object-contain">
+                        </div>
+                        <div class="flex items-center justify-center h-16">
+                            <img src="bath.gif" alt="University of Bath" class="max-w-[85%] max-h-11 md:max-h-12 w-auto object-contain">
+                        </div>
+                        <div class="flex items-center justify-center h-16">
+                            <img src="ucl_dark.webp" alt="UCL" class="max-w-[85%] max-h-11 md:max-h-12 w-auto object-contain">
+                        </div>
+                        <div class="flex items-center justify-center h-16">
+                            <img src="maths4dl.png" alt="Maths4DL" class="max-w-[85%] max-h-10 md:max-h-11 w-auto object-contain">
+                        </div>
+                        <div class="flex items-center justify-center h-16">
+                            <img src="probai.svg" alt="ProbAI" class="max-w-[85%] max-h-10 md:max-h-11 w-auto object-contain">
+                        </div>
+                        <div class="flex items-center justify-center h-16">
+                            <img src="cia_logo.png" alt="Cambridge Image Analysis" class="max-w-[85%] max-h-10 md:max-h-11 w-auto object-contain">
+                        </div>
                     </div>
                 </div>
 
