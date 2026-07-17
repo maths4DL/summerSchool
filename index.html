@@ -750,6 +750,33 @@
                         <summary class="talk-summary">
                             <span class="talk-toggle" aria-hidden="true">&gt;</span>
                             <span>
+                                <span class="block text-sm font-semibold text-cambridge mb-2">Jack Ross (Imperial College London)</span>
+                                <span class="block text-lg md:text-xl font-serif font-bold text-navy dark:text-white">Towards data-driven prediction of tipping points in non-autonomous dynamical systems</span>
+                            </span>
+                        </summary>
+                        <div class="talk-abstract">
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4 last:mb-0">Forecasting tipping points in non-autonomous dynamical systems is a central challenge in climate science and beyond. This requires extrapolation of a system's trajectory into unseen regions of phase space, a task that is often ill-posed. Existing early-warning approaches largely rely on critical slowing down (CSD), which tracks loss of stability near bifurcation points. However, such methods only apply to tipping induced by a local-bifurcation and often do not directly forecast when tipping will occur. We instead use data-driven machine learning to recover system dynamics from pre-tipping trajectories. For simple models, we discuss if such a recovery is possible and evaluate the performance of the learned models in forecasting future tipping. Future work hopes to extend these methods to other tipping mechanisms and incorporate deep learning to scale to higher-dimensional systems.</p>
+                        </div>
+                    </details>
+                    <details class="talk-entry bg-white dark:bg-slate-800 p-6 md:p-7 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 border-l-4 border-cambridge">
+                        <summary class="talk-summary">
+                            <span class="talk-toggle" aria-hidden="true">&gt;</span>
+                            <span>
+                                <span class="block text-sm font-semibold text-cambridge mb-2">Maciej Roman Kaczorek (University College London)</span>
+                                <span class="block text-lg md:text-xl font-serif font-bold text-navy dark:text-white">Sound reconstruction from neural activity patterns</span>
+                            </span>
+                        </summary>
+                        <div class="talk-abstract">
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4 last:mb-0">Understanding how the brain encodes sound is a central challenge in auditory neuroscience, with direct implications for hearing loss research. A natural computational approach is to model the forward transformation from acoustic stimuli to neural activity. Crucially, inverting a subject-specific forward model then offers a principled route to decoding what is encoded in an individual's auditory system. However, as proved during experiments, the problem remains highly ill-posed due to the large null space of the forward operator.</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4 last:mb-0"><strong class="text-navy dark:text-white">Forward model.</strong> We build on ICNet, a convolutional encoder–decoder trained to predict multi-unit activity from the inferior colliculus of anaesthetised gerbils. Inverting the model layer-by-layer reveals that its strided convolutional encoder introduces aliasing artefacts that degrade invertibility, impairing gradient-based reconstruction.</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4 last:mb-0"><strong class="text-navy dark:text-white">Causal Blur Pooling.</strong> We replace all strided convolutions with a stride-1 convolution followed by causal blur pooling - a parameter-free low-pass filtering step that suppresses aliasing while preserving forward model capacity. This improves the smoothness and stability of the inverse problem, yielding a better-conditioned forward operator.</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4 last:mb-0"><strong class="text-navy dark:text-white">Reconstruction.</strong> We evaluate reconstruction strategies of increasing complexity. First, we formulate reconstruction as an inverse problem in a transform domain, solved via linearised Bregman iterations with soft-thresholding on Fourier and cosine transform coefficients. Second, we evaluate plug and play approaches demonstrating that even under an inverse crime scenario classical regularization methods provide little to no benefit. Third, we demonstrate that causal blur pooling layers significantly improve reconstruction.</p>
+                        </div>
+                    </details>
+                    <details class="talk-entry bg-white dark:bg-slate-800 p-6 md:p-7 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 border-l-4 border-cambridge">
+                        <summary class="talk-summary">
+                            <span class="talk-toggle" aria-hidden="true">&gt;</span>
+                            <span>
                                 <span class="block text-sm font-semibold text-cambridge mb-2">Marco Dell’Orto (University of Padova)</span>
                                 <span class="block text-lg md:text-xl font-serif font-bold text-navy dark:text-white">Distributed data assimilation on moving devices via localized operator networks and deep Kalman filter</span>
                             </span>
