@@ -71,6 +71,105 @@
             display: block;
             opacity: 1;
         }
+
+        .schedule-table {
+            min-width: 980px;
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            background: #fff;
+            color: #1e293b;
+        }
+        .schedule-table th {
+            padding: 1rem 1.25rem;
+            background: #00204E;
+            color: #fff;
+            font-weight: 600;
+            text-align: left;
+            border-bottom: 1px solid #475569;
+        }
+        .schedule-table th.highlight {
+            background: #A3C1AD;
+            color: #00204E;
+        }
+        .schedule-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .schedule-table td:first-child {
+            width: 10rem;
+            background: #f8fafc;
+            color: #64748b;
+            font-weight: 600;
+            text-align: left;
+        }
+        .schedule-table tbody tr:hover td:not(.free-cell):not(.reception-cell) {
+            background: #f8fafc;
+        }
+        .schedule-table .lecture {
+            color: #00204E;
+            font-weight: 700;
+        }
+        .schedule-table .break-row td:not(:first-child):not(.free-cell) {
+            background: #eef4f1;
+            color: #00204E;
+            font-weight: 700;
+        }
+        .schedule-table .free-cell {
+            background: #f8fafc;
+            color: #64748b;
+            font-style: italic;
+            font-weight: 600;
+        }
+        .schedule-table .reception-cell {
+            background: #eff6f3;
+            color: #00204E;
+            font-weight: 700;
+        }
+        .schedule-note {
+            display: block;
+            margin-top: 0.25rem;
+            color: #64748b;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .dark .schedule-table {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        .dark .schedule-table th {
+            background: #020617;
+            border-bottom-color: #334155;
+        }
+        .dark .schedule-table th.highlight {
+            background: #A3C1AD;
+            color: #00204E;
+        }
+        .dark .schedule-table td {
+            border-color: #334155;
+        }
+        .dark .schedule-table td:first-child,
+        .dark .schedule-table tbody tr:hover td:not(.free-cell):not(.reception-cell) {
+            background: rgba(15, 23, 42, 0.55);
+        }
+        .dark .schedule-table .lecture {
+            color: #fff;
+        }
+        .dark .schedule-table .break-row td:not(:first-child):not(.free-cell),
+        .dark .schedule-table .reception-cell {
+            background: rgba(163, 193, 173, 0.16);
+            color: #A3C1AD;
+        }
+        .dark .schedule-table .free-cell {
+            background: rgba(15, 23, 42, 0.75);
+            color: #cbd5e1;
+        }
+        .dark .schedule-note {
+            color: #cbd5e1;
+        }
     </style>
 </head>
 <body class="bg-[#FAFAF9] text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased transition-colors duration-300">
@@ -232,44 +331,105 @@
 
     <!-- Structure of the Week (Schedule) -->
     <section id="schedule" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy dark:text-white text-center mb-16">Structure of the Week</h2>
 
             <p class="text-center text-slate-600 dark:text-slate-400 mb-10">
-                Each lecturer will teach for one day, roughly from <strong>09:00 to 17:00</strong>.<br>
-                Wednesday morning is dedicated to participant talks/posters, followed by a free afternoon to explore Cambridge.
+                Monday begins with registration at <strong>08:30</strong>, followed by opening remarks at <strong>08:55</strong>.<br>
+                Wednesday morning is dedicated to participant talks, followed by a free afternoon to explore Cambridge.
             </p>
 
             <h3 class="text-xl font-serif font-bold text-navy dark:text-cambridge text-center mb-4">Tentative Schedule</h3>
 
             <div class="overflow-x-auto shadow-md rounded-lg border border-slate-200 dark:border-slate-700">
-                <table class="w-full text-left bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200">
-                    <thead class="bg-navy text-white dark:bg-slate-950">
+                <table class="schedule-table">
+                    <thead>
                         <tr>
-                            <th class="py-4 px-6 font-semibold border-b border-slate-600">Time</th>
-                            <th class="py-4 px-6 font-semibold border-b border-slate-600">Monday</th>
-                            <th class="py-4 px-6 font-semibold border-b border-slate-600">Tuesday</th>
-                            <th class="py-4 px-6 font-semibold border-b border-slate-600 bg-cambridge text-navy">Wednesday</th>
-                            <th class="py-4 px-6 font-semibold border-b border-slate-600">Thursday</th>
-                            <th class="py-4 px-6 font-semibold border-b border-slate-600">Friday</th>
+                            <th>Time slot</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th class="highlight">Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
-                            <td class="py-4 px-6 font-medium text-slate-500 dark:text-slate-400">Morning</td>
-                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Eldad Haber</td>
-                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Nikola B. Kovachki</td>
-                            <td class="py-4 px-6 font-semibold text-cambridge dark:text-cambridge">Short Talks & Posters</td>
-                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Audrey Repetti</td>
-                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Brynjulf Owren</td>
+                    <tbody>
+                        <tr>
+                            <td>8:30 - 8:55 am</td>
+                            <td class="lecture">Registration</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
-                            <td class="py-4 px-6 font-medium text-slate-500 dark:text-slate-400">Afternoon</td>
-                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Eldad Haber</td>
-                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Nikola B. Kovachki</td>
-                            <td class="py-4 px-6 italic text-slate-500 dark:text-slate-400">Free Afternoon</td>
-                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Audrey Repetti</td>
-                            <td class="py-4 px-6 font-bold text-navy dark:text-white">Brynjulf Owren</td>
+                        <tr>
+                            <td>8:55 - 9 am</td>
+                            <td class="lecture">Opening remarks</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10:30 am</td>
+                            <td class="lecture">Lecture 1 Eldad Haber</td>
+                            <td class="lecture">Lecture 1 Nikola B. Kovachki</td>
+                            <td class="lecture">6 oral presentations<span class="schedule-note">15 minutes each</span></td>
+                            <td class="lecture">Lecture 1 Audrey Repetti</td>
+                            <td class="lecture">Lecture 1 Brynjulf Owren</td>
+                        </tr>
+                        <tr class="break-row">
+                            <td>10:30 - 11 am</td>
+                            <td>Coffee break</td>
+                            <td>Coffee break</td>
+                            <td>Coffee break</td>
+                            <td>Coffee break</td>
+                            <td>Coffee break</td>
+                        </tr>
+                        <tr>
+                            <td>11 am - 12:30 pm</td>
+                            <td class="lecture">Lecture 2 Eldad Haber</td>
+                            <td class="lecture">Lecture 2 Nikola B. Kovachki</td>
+                            <td class="lecture">6 oral presentations<span class="schedule-note">15 minutes each</span></td>
+                            <td class="lecture">Lecture 2 Audrey Repetti</td>
+                            <td class="lecture">Lecture 2 Brynjulf Owren</td>
+                        </tr>
+                        <tr class="break-row">
+                            <td>12:30 - 1:30 pm</td>
+                            <td>Lunch break</td>
+                            <td>Lunch break</td>
+                            <td rowspan="4" class="free-cell">Free afternoon</td>
+                            <td>Lunch break</td>
+                            <td>Lunch break</td>
+                        </tr>
+                        <tr>
+                            <td>1:30 - 3 pm</td>
+                            <td class="lecture">Lecture 3 Eldad Haber</td>
+                            <td class="lecture">Lecture 3 Nikola B. Kovachki</td>
+                            <td class="lecture">Lecture 3 Audrey Repetti</td>
+                            <td class="lecture">Lecture 3 Brynjulf Owren</td>
+                        </tr>
+                        <tr class="break-row">
+                            <td>3 - 3:30 pm</td>
+                            <td>Coffee break</td>
+                            <td>Coffee break</td>
+                            <td>Coffee break</td>
+                            <td>Coffee break</td>
+                        </tr>
+                        <tr>
+                            <td>3:30 - 5 pm</td>
+                            <td class="lecture">Lecture 4 Eldad Haber</td>
+                            <td class="lecture">Lecture 4 Nikola B. Kovachki</td>
+                            <td class="lecture">Lecture 4 Audrey Repetti</td>
+                            <td class="lecture">Lecture 4 Brynjulf Owren</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 7 pm</td>
+                            <td class="reception-cell">Reception + Poster session</td>
+                            <td class="free-cell">Free</td>
+                            <td class="free-cell">Free</td>
+                            <td class="free-cell">Free</td>
+                            <td class="free-cell">Free</td>
                         </tr>
                     </tbody>
                 </table>
