@@ -238,8 +238,8 @@
                 <div class="flex items-center gap-4 md:gap-6">
                     <div class="hidden lg:flex space-x-5 xl:space-x-6 items-center">
                         <a href="#programme" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge transition-colors uppercase tracking-wide">Programme</a>
-                        <a href="#talks-posters" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge transition-colors uppercase tracking-wide">Talks/Posters</a>
                         <a href="#speakers" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge transition-colors uppercase tracking-wide">Speakers</a>
+                        <a href="#talks-posters" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge transition-colors uppercase tracking-wide">Talks/Posters</a>
                         <a href="#organisers" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge transition-colors uppercase tracking-wide">Organisers</a>
                         <a href="#logistics" class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge transition-colors uppercase tracking-wide">Logistics</a>
                         <a href="#schedule" class="px-5 xl:px-6 py-2 bg-navy dark:bg-cambridge text-white dark:text-navy text-sm font-medium rounded-sm hover:bg-slate-800 dark:hover:bg-white transition-colors shadow-sm whitespace-nowrap">Schedule</a>
@@ -262,8 +262,8 @@
         <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 absolute w-full shadow-lg">
             <div class="flex flex-col px-4 py-4 space-y-4">
                 <a href="#programme" class="mobile-link text-base font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge uppercase tracking-wide">Programme</a>
-                <a href="#talks-posters" class="mobile-link text-base font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge uppercase tracking-wide">Talks/Posters</a>
                 <a href="#speakers" class="mobile-link text-base font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge uppercase tracking-wide">Speakers</a>
+                <a href="#talks-posters" class="mobile-link text-base font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge uppercase tracking-wide">Talks/Posters</a>
                 <a href="#organisers" class="mobile-link text-base font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge uppercase tracking-wide">Organisers</a>
                 <a href="#logistics" class="mobile-link text-base font-medium text-slate-600 dark:text-slate-300 hover:text-navy dark:hover:text-cambridge uppercase tracking-wide">Logistics</a>
                 <a href="#schedule" class="mobile-link inline-block text-center px-6 py-3 mt-2 bg-navy dark:bg-cambridge text-white dark:text-navy font-medium rounded-sm">Schedule</a>
@@ -458,6 +458,59 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speakers -->
+    <section id="speakers" class="py-24 bg-white dark:bg-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy dark:text-white text-center mb-16">Lecturers</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
+                <!-- Speaker Card 1 -->
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 border-t-4 border-cambridge shadow-sm hover:shadow-md transition-all flex flex-col items-center md:items-start">
+                    <img src="nikola.jpg" alt="Nikola B. Kovachki" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-cambridge shadow-sm">
+                    <p class="text-xs font-bold text-cambridge uppercase tracking-wider mb-2">NVIDIA / Caltech</p>
+                    <h3 class="text-lg font-serif font-bold mb-1">
+                        <a href="https://kovachki.github.io/" target="_blank" class="text-navy dark:text-white hover:text-cambridge dark:hover:text-cambridge transition-colors">Nikola B. Kovachki</a>
+                    </h3>
+                    <hr class="border-slate-200 dark:border-slate-700 mb-4 mt-3 w-full">
+                    <p class="text-sm text-slate-600 dark:text-slate-300">Expert in approximation theory for infinite-dimensional spaces.</p>
+                </div>
+
+                <!-- Speaker Card 2 -->
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 border-t-4 border-cambridge shadow-sm hover:shadow-md transition-all flex flex-col items-center md:items-start">
+                    <img src="eldad.jpg" alt="Eldad Haber" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-cambridge shadow-sm">
+                    <p class="text-xs font-bold text-cambridge uppercase tracking-wider mb-2">UBC</p>
+                    <h3 class="text-lg font-serif font-bold mb-1">
+                        <a href="https://www.eoas.ubc.ca/people/eldadhaber" target="_blank" class="text-navy dark:text-white hover:text-cambridge dark:hover:text-cambridge transition-colors">Eldad Haber</a>
+                    </h3>
+                    <hr class="border-slate-200 dark:border-slate-700 mb-4 mt-3 w-full">
+                    <p class="text-sm text-slate-600 dark:text-slate-300">Leader in mathematical modelling of deep learning frameworks.</p>
+                </div>
+
+                <!-- Speaker Card 3 -->
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 border-t-4 border-cambridge shadow-sm hover:shadow-md transition-all flex flex-col items-center md:items-start">
+                    <img src="brynjulf.jpg" alt="Brynjulf Owren" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-cambridge shadow-sm">
+                    <p class="text-xs font-bold text-cambridge uppercase tracking-wider mb-2">NTNU</p>
+                    <h3 class="text-lg font-serif font-bold mb-1">
+                        <a href="https://www.ntnu.edu/employees/brynjulf.owren" target="_blank" class="text-navy dark:text-white hover:text-cambridge dark:hover:text-cambridge transition-colors">Brynjulf Owren</a>
+                    </h3>
+                    <hr class="border-slate-200 dark:border-slate-700 mb-4 mt-3 w-full">
+                    <p class="text-sm text-slate-600 dark:text-slate-300">Researching structure-preserving methods for deep learning and differential equations.</p>
+                </div>
+
+                <!-- Speaker Card 4 -->
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 border-t-4 border-cambridge shadow-sm hover:shadow-md transition-all flex flex-col items-center md:items-start">
+                    <img src="audrey.jpg" alt="Audrey Repetti" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-cambridge shadow-sm">
+                    <p class="text-xs font-bold text-cambridge uppercase tracking-wider mb-2">Heriot-Watt</p>
+                    <h3 class="text-lg font-serif font-bold mb-1">
+                        <a href="https://researchportal.hw.ac.uk/en/persons/audrey-repetti" target="_blank" class="text-navy dark:text-white hover:text-cambridge dark:hover:text-cambridge transition-colors">Audrey Repetti</a>
+                    </h3>
+                    <hr class="border-slate-200 dark:border-slate-700 mb-4 mt-3 w-full">
+                    <p class="text-sm text-slate-600 dark:text-slate-300">Leading researcher in inverse problems and continuous optimisation.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -815,54 +868,80 @@
             </div>
         </div>
     </section>
-    <!-- Speakers -->
-    <section id="speakers" class="py-24 bg-white dark:bg-slate-800 transition-colors duration-300">
+
+    <!-- Free Afternoon -->
+    <section id="free-afternoon" class="py-24 bg-white dark:bg-slate-800 transition-colors duration-300 border-y border-slate-200 dark:border-slate-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy dark:text-white text-center mb-16">Lecturers</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy dark:text-white mb-4">Free Afternoon in Cambridge</h2>
+                <div class="w-24 h-1 bg-cambridge mx-auto"></div>
+                <p class="mt-6 text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                    Wednesday afternoon is left free. These are nearby options that work well in a half-day, depending on whether you want colleges, museums, computing history, green space, or a quiet pub stop.
+                </p>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
-                <!-- Speaker Card 1 -->
-                <div class="bg-slate-50 dark:bg-slate-900 p-6 border-t-4 border-cambridge shadow-sm hover:shadow-md transition-all flex flex-col items-center md:items-start">
-                    <img src="nikola.jpg" alt="Nikola B. Kovachki" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-cambridge shadow-sm">
-                    <p class="text-xs font-bold text-cambridge uppercase tracking-wider mb-2">NVIDIA / Caltech</p>
-                    <h3 class="text-lg font-serif font-bold mb-1">
-                        <a href="https://kovachki.github.io/" target="_blank" class="text-navy dark:text-white hover:text-cambridge dark:hover:text-cambridge transition-colors">Nikola B. Kovachki</a>
-                    </h3>
-                    <hr class="border-slate-200 dark:border-slate-700 mb-4 mt-3 w-full">
-                    <p class="text-sm text-slate-600 dark:text-slate-300">Expert in approximation theory for infinite-dimensional spaces.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 border-t-4 border-cambridge">
+                    <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-3">Punting on the River Cam</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">A relaxed way to see the College Backs from the water. Use licensed operators at official punting stations rather than street touts.</p>
+                    <a href="https://www.cambridge.gov.uk/punting" target="_blank" class="text-sm font-semibold text-navy dark:text-cambridge hover:underline">Punting guidance</a>
                 </div>
 
-                <!-- Speaker Card 2 -->
-                <div class="bg-slate-50 dark:bg-slate-900 p-6 border-t-4 border-cambridge shadow-sm hover:shadow-md transition-all flex flex-col items-center md:items-start">
-                    <img src="eldad.jpg" alt="Eldad Haber" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-cambridge shadow-sm">
-                    <p class="text-xs font-bold text-cambridge uppercase tracking-wider mb-2">UBC</p>
-                    <h3 class="text-lg font-serif font-bold mb-1">
-                        <a href="https://www.eoas.ubc.ca/people/eldadhaber" target="_blank" class="text-navy dark:text-white hover:text-cambridge dark:hover:text-cambridge transition-colors">Eldad Haber</a>
-                    </h3>
-                    <hr class="border-slate-200 dark:border-slate-700 mb-4 mt-3 w-full">
-                    <p class="text-sm text-slate-600 dark:text-slate-300">Leader in mathematical modelling of deep learning frameworks.</p>
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 border-t-4 border-cambridge">
+                    <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-3">King’s College Chapel and the Backs</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">The iconic Cambridge stop. If you want to visit inside King’s College Chapel and Grounds, advance tickets are recommended because numbers are limited.</p>
+                    <a href="https://shop.kings.cam.ac.uk/pages/visiting-kings-college-chapel" target="_blank" class="text-sm font-semibold text-navy dark:text-cambridge hover:underline">Visitor tickets</a>
                 </div>
 
-                <!-- Speaker Card 3 -->
-                <div class="bg-slate-50 dark:bg-slate-900 p-6 border-t-4 border-cambridge shadow-sm hover:shadow-md transition-all flex flex-col items-center md:items-start">
-                    <img src="brynjulf.jpg" alt="Brynjulf Owren" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-cambridge shadow-sm">
-                    <p class="text-xs font-bold text-cambridge uppercase tracking-wider mb-2">NTNU</p>
-                    <h3 class="text-lg font-serif font-bold mb-1">
-                        <a href="https://www.ntnu.edu/employees/brynjulf.owren" target="_blank" class="text-navy dark:text-white hover:text-cambridge dark:hover:text-cambridge transition-colors">Brynjulf Owren</a>
-                    </h3>
-                    <hr class="border-slate-200 dark:border-slate-700 mb-4 mt-3 w-full">
-                    <p class="text-sm text-slate-600 dark:text-slate-300">Researching structure-preserving methods for deep learning and differential equations.</p>
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 border-t-4 border-cambridge">
+                    <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-3">The Fitzwilliam Museum</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">A strong free option for art, antiquities, manuscripts, coins, and applied arts. The museum is usually open Tuesday to Saturday, 10am - 5pm.</p>
+                    <a href="https://fitzmuseum.cam.ac.uk/plan-your-visit" target="_blank" class="text-sm font-semibold text-navy dark:text-cambridge hover:underline">Plan your visit</a>
                 </div>
 
-                <!-- Speaker Card 4 -->
-                <div class="bg-slate-50 dark:bg-slate-900 p-6 border-t-4 border-cambridge shadow-sm hover:shadow-md transition-all flex flex-col items-center md:items-start">
-                    <img src="audrey.jpg" alt="Audrey Repetti" class="w-24 h-24 rounded-full mb-4 object-cover border-2 border-cambridge shadow-sm">
-                    <p class="text-xs font-bold text-cambridge uppercase tracking-wider mb-2">Heriot-Watt</p>
-                    <h3 class="text-lg font-serif font-bold mb-1">
-                        <a href="https://researchportal.hw.ac.uk/en/persons/audrey-repetti" target="_blank" class="text-navy dark:text-white hover:text-cambridge dark:hover:text-cambridge transition-colors">Audrey Repetti</a>
-                    </h3>
-                    <hr class="border-slate-200 dark:border-slate-700 mb-4 mt-3 w-full">
-                    <p class="text-sm text-slate-600 dark:text-slate-300">Leading researcher in inverse problems and continuous optimisation.</p>
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 border-t-4 border-cambridge">
+                    <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-3">Centre for Computing History</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Hands-on computing history, retro machines, games, and personal-computing exhibits. It is usually open 10am - 5pm in the summer holidays.</p>
+                    <a href="https://www.computinghistory.org.uk/pages/28568/Visiting/" target="_blank" class="text-sm font-semibold text-navy dark:text-cambridge hover:underline">Visiting information</a>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 border-t-4 border-cambridge">
+                    <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-3">Cambridge University Botanic Garden</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">A calm outdoor option with glasshouses, gardens, and shaded paths. Summer opening is usually 10am - 6pm, with last paid admission 30 minutes before closing.</p>
+                    <a href="https://www.botanic.cam.ac.uk/visit-us/" target="_blank" class="text-sm font-semibold text-navy dark:text-cambridge hover:underline">Visit the garden</a>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 border-t-4 border-cambridge">
+                    <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-3">Museum of Zoology</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">A compact, free museum near the centre, good for a shorter visit. On Wednesdays it is usually open 10am - 4:30pm, with last entry at 4:15pm.</p>
+                    <a href="https://www.museum.zoo.cam.ac.uk/" target="_blank" class="text-sm font-semibold text-navy dark:text-cambridge hover:underline">Museum details</a>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                <h3 class="text-2xl font-serif font-bold text-navy dark:text-white mb-4">Some good pubs</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">For dinner or a break after exploring, these are easy Cambridge choices.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <a href="https://www.greeneking.co.uk/pubs/cambridgeshire/eagle" target="_blank" class="block p-4 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 hover:border-cambridge transition-colors">
+                        <span class="block font-semibold text-navy dark:text-white">The Eagle</span>
+                        <span class="block text-sm text-slate-500 dark:text-slate-400 mt-1">Historic city-centre pub, famous for its DNA connection.</span>
+                    </a>
+                    <a href="https://www.greeneking.co.uk/pubs/cambridgeshire/granta" target="_blank" class="block p-4 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 hover:border-cambridge transition-colors">
+                        <span class="block font-semibold text-navy dark:text-white">The Granta</span>
+                        <span class="block text-sm text-slate-500 dark:text-slate-400 mt-1">Waterside pub by Mill Pond, convenient after the Backs.</span>
+                    </a>
+                    <a href="https://cambridge.pub/the-blue/" target="_blank" class="block p-4 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 hover:border-cambridge transition-colors">
+                        <span class="block font-semibold text-navy dark:text-white">The Cambridge Blue</span>
+                        <span class="block text-sm text-slate-500 dark:text-slate-400 mt-1">A good pick for real ale, cider, and Belgian beers.</span>
+                    </a>
+                    <a href="https://www.maypolefreehouse.co.uk/" target="_blank" class="block p-4 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 hover:border-cambridge transition-colors">
+                        <span class="block font-semibold text-navy dark:text-white">The Maypole</span>
+                        <span class="block text-sm text-slate-500 dark:text-slate-400 mt-1">Independent pub with Italian food and a broad beer range.</span>
+                    </a>
+                    <a href="https://www.thearchitectcambridge.co.uk/" target="_blank" class="block p-4 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 hover:border-cambridge transition-colors">
+                        <span class="block font-semibold text-navy dark:text-white">The Architect</span>
+                        <span class="block text-sm text-slate-500 dark:text-slate-400 mt-1">Good food option near Castle Street, known for fish and chips and pie and mash.</span>
+                    </a>
                 </div>
             </div>
         </div>
