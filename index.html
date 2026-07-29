@@ -312,50 +312,6 @@
         </div>
     </section>
 
-    <!-- Scientific Themes -->
-    <section id="programme" class="py-24 bg-white dark:bg-slate-800 border-y border-slate-200 dark:border-slate-700 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy dark:text-white mb-4">Scientific Programme</h2>
-                <div class="w-24 h-1 bg-cambridge mx-auto"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="flex gap-6 group">
-                    <div class="flex-shrink-0 w-12 h-12 border border-cambridge text-cambridge dark:text-cambridge rounded-full flex items-center justify-center font-serif text-xl italic group-hover:bg-cambridge group-hover:text-navy transition-colors">1</div>
-                    <div>
-                        <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-2">Approximation Theory</h3>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Key results on neural network approximation, generalised to neural operators for learning mappings between infinite-dimensional function spaces.</p>
-                    </div>
-                </div>
-
-                <div class="flex gap-6 group">
-                    <div class="flex-shrink-0 w-12 h-12 border border-cambridge text-cambridge dark:text-cambridge rounded-full flex items-center justify-center font-serif text-xl italic group-hover:bg-cambridge group-hover:text-navy transition-colors">2</div>
-                    <div>
-                        <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-2">Generative Modelling</h3>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Exploration of flow matching as a bridge between ODEs and density estimation, offering a deterministic alternative to diffusion models.</p>
-                    </div>
-                </div>
-
-                <div class="flex gap-6 group">
-                    <div class="flex-shrink-0 w-12 h-12 border border-cambridge text-cambridge dark:text-cambridge rounded-full flex items-center justify-center font-serif text-xl italic group-hover:bg-cambridge group-hover:text-navy transition-colors">3</div>
-                    <div>
-                        <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-2">Structure Preserving Deep Learning</h3>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Designing deep learning methods that preserve geometric and dynamical structure, with foundations in numerical analysis, differential equations, and structure-preserving discretisation.</p>
-                    </div>
-                </div>
-
-                <div class="flex gap-6 group">
-                    <div class="flex-shrink-0 w-12 h-12 border border-cambridge text-cambridge dark:text-cambridge rounded-full flex items-center justify-center font-serif text-xl italic group-hover:bg-cambridge group-hover:text-navy transition-colors">4</div>
-                    <div>
-                        <h3 class="text-xl font-serif font-bold text-navy dark:text-white mb-2">Inverse Problems & Optimisation</h3>
-                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Addressing complex optimisation challenges, drawing connections between classical methods and modern deep learning frameworks.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Structure of the Week (Schedule) -->
     <section id="schedule" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -458,6 +414,42 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scientific Programme -->
+    <section id="programme" class="py-24 bg-white dark:bg-slate-800 border-y border-slate-200 dark:border-slate-700 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy dark:text-white mb-4">Scientific Programme</h2>
+                <div class="w-24 h-1 bg-cambridge mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-slate-50 dark:bg-slate-900 p-7 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 border-t-4 border-cambridge">
+                    <p class="text-sm font-semibold text-cambridge mb-2">Eldad Haber</p>
+                    <h3 class="text-xl md:text-2xl font-serif font-bold text-navy dark:text-white mb-4">Generative AI with Flows</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Generative modelling will be presented as a transport problem: learning a process that transports a simple reference distribution, typically Gaussian noise, into a complex data distribution. The course begins with particles, densities, flows, and the continuity equation, then develops normalizing flows and their change-of-variables perspective. It next connects Bayesian denoising and score matching to diffusion, reverse-time SDEs, and probability-flow ODEs. The final part covers flow matching, learned velocity fields, flow maps and Koopman-based viewpoints, together with practical questions of training, sampling, guidance, architecture, and the role of conservative flows. Applications in practice will include conditional generation and inverse problems.</p>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 p-7 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 border-t-4 border-cambridge">
+                    <p class="text-sm font-semibold text-cambridge mb-2">Nikola B. Kovachki</p>
+                    <h3 class="text-xl md:text-2xl font-serif font-bold text-navy dark:text-white mb-4">Approximation Theory of Neural Networks and Operators</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">This course will focus on the approximation theory of neural networks and neural operators: what classes of functions and operators they can approximate, and how accurately they can do so with finite complexity. It will introduce universal approximation results for neural networks and operator-learning architectures, then discuss approximation rates and what they reveal about efficiency. The course will also address challenges that arise when learning maps between infinite-dimensional function spaces, including their data requirements. These ideas will be connected to partial differential equations.</p>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 p-7 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 border-t-4 border-cambridge">
+                    <p class="text-sm font-semibold text-cambridge mb-2">Audrey Repetti</p>
+                    <h3 class="text-xl md:text-2xl font-serif font-bold text-navy dark:text-white mb-4">From Variational Methods to Proximal Neural Networks</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">The course connects classical variational optimisation with modern neural-network methods for computational imaging. It starts from inverse imaging problems and shows how data fidelity, regularisation, and proximal splitting algorithms produce reliable, interpretable reconstruction procedures. A common operator viewpoint will then be used to relate these iterative methods to feed-forward neural networks. The main focus is on hybrid approaches: unfolded networks that turn optimisation iterations into trainable layers, and plug-and-play or implicit-prior methods that insert learned denoisers into reconstruction algorithms while retaining mathematical structure. A hands-on session using the DeepInverse library will directly apply these tools to representative imaging problems.</p>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 p-7 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 border-t-4 border-cambridge">
+                    <p class="text-sm font-semibold text-cambridge mb-2">Brynjulf Owren</p>
+                    <h3 class="text-xl md:text-2xl font-serif font-bold text-navy dark:text-white mb-4">Structure-Preserving and Stable Neural Networks</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">These lectures examine neural networks designed to preserve mathematical or physical structure and networks constrained for stability. The first part covers Hamiltonian and Lagrangian neural networks, symplectic architectures, and models that preserve or dissipate energy, explaining how known dynamics can be built into the learning system rather than recovered only from data. The course then turns to stable and non-expansive networks, including architectural and layer-scaling strategies that control sensitivity and can improve resistance to adversarial perturbations. It will also consider equivariance and neural networks whose hidden states evolve on manifolds, broadening the discussion from Euclidean layers to geometry-aware representations.</p>
+                </div>
             </div>
         </div>
     </section>
